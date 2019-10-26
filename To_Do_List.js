@@ -95,7 +95,7 @@ function init(){
       return li;
   }
   function removeElement(ev){
-      if(ev.target.class == 'delete_btn'){
+      if(ev.target.className == 'delete_btn'){
         ev.currentTarget.remove();
         removeData(ev.currentTarget.id);
       }
@@ -103,7 +103,7 @@ function init(){
 
   function getCheckBox(){
       let check = document.createElement("span");
-      check.class = 'check_btn'
+      check.className = 'check_btn';
       check.innerHTML = "";
       check.addEventListener('click', togglecheck);
       return check;
@@ -120,7 +120,7 @@ function init(){
 
   function getDelete(){
       let deleteBtn = document.createElement("span");
-      deleteBtn.class = "delete_btn";
+      deleteBtn.className = "delete_btn";
       deleteBtn.innerHTML = "&#10006";
       deleteBtn.addEventListener('click', nothing);
       return deleteBtn;
@@ -134,13 +134,7 @@ function init(){
         return (item.id != num);
       });
       //to remove the empty cells from the array
-      let l = 0;
-      data.forEach((item) => {
-        if(item){
-          l++;
-        }
-      });
-      data.length = l + 1;
+
       console.log("Now data :",data.length);
   }
 }
