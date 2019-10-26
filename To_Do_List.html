@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>TO DO LIST</title>
-                
+
     </head>
     <style>
         *{
@@ -31,7 +31,7 @@
             padding: 3px;
             font-size: 30px;
         }
-        
+
         li div{
             flex: 5;
             margin: 0px 20px 0px 20px;
@@ -40,7 +40,7 @@
             border-radius: 10px;
             overflow: auto;
         }
-        li span{
+        .delete_btn, .check_btn{
             height: 40px;
             width: 40px;
             border-radius: 50%;
@@ -48,14 +48,14 @@
             text-align: center;
             padding-bottom: 3px;
             color: #cc6600;
-            
+
         }
         li span:hover{
             cursor: pointer;
             background-color: #cc6600;
             color: white;
         }
-        
+
         .btn {
             padding: 10px;
             background-color: #cc6600;
@@ -70,7 +70,7 @@
             cursor: pointer;
         }
         .inner{
-            padding: 12px;            
+            padding: 12px;
         }
         .left{
             flex: 2;
@@ -91,25 +91,25 @@
             }
         }
     </style>
-    
-    
+
+
     <body>
-    
+
         <div class="wrapper">
             <div class="inner left">
-                
+
                 <label>To Do</label>
                 <input id="element">
                 <button id="add-btn" class="btn" type="submit">Add</button>
-                
-                 
+
+
             </div>
             <div class="inner right">
-                <ul id="list"> 
-                                                  
+                <ul id="list">
+
                 </ul>
             </div>
         </div>
         <script src="To_Do_List.js"></script>
-    </body>    
+    </body>
 </html>
