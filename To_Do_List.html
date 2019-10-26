@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>TO DO LIST</title>
+                
+    </head>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .wrapper{
+            width: 70%;
+            height: auto;
+            background-color: #cc6600;
+            margin: 0px auto;
+            padding: 5px;
+            display: flex;
+        }
+        #element{
+            width: 100%;
+            margin-top: 20px;
+            height: 25px;
+            font-size: 20px;
+        }
+        li{
+            display: flex;
+            margin-top: 2px;
+            padding: 3px;
+            font-size: 30px;
+        }
+        
+        li div{
+            flex: 5;
+            margin: 0px 20px 0px 20px;
+            padding: 3px 10px 3px 10px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: auto;
+        }
+        li span{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: white;
+            text-align: center;
+            padding-bottom: 3px;
+            color: #cc6600;
+            
+        }
+        li span:hover{
+            cursor: pointer;
+            background-color: #cc6600;
+            color: white;
+        }
+        
+        .btn {
+            padding: 10px;
+            background-color: #cc6600;
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            margin-top: 20px;
+            border: 0px;
+        }
+        .btn:hover{
+            background-color: #b35900;
+            cursor: pointer;
+        }
+        .inner{
+            padding: 12px;            
+        }
+        .left{
+            flex: 2;
+            background-color: white;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .right{
+            flex: 4;
+            background-color: #ffc266;
+            height: 500px;
+            overflow: auto;
+        }
+        @media (max-width:800px){
+            .wrapper{
+                flex-direction: column;
+            }
+        }
+    </style>
+    
+    
+    <body>
+    
+        <div class="wrapper">
+            <div class="inner left">
+                
+                <label>To Do</label>
+                <input id="element">
+                <button id="add-btn" class="btn" type="submit">Add</button>
+                
+                 
+            </div>
+            <div class="inner right">
+                <ul id="list"> 
+                                                  
+                </ul>
+            </div>
+        </div>
+        <script src="To_Do_List.js"></script>
+    </body>    
+</html>
