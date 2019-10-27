@@ -11,6 +11,25 @@
             margin: 0px;
             padding: 0px;
         }
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: white;
+          border-radius: 4px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #ffc266;
+          border-radius: 4px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #b35900;
+        }
         .wrapper{
             width: 70%;
             height: auto;
@@ -69,8 +88,35 @@
             background-color: #b35900;
             cursor: pointer;
         }
+        .small_btn{
+          float: right;
+          padding: 5px 8px 5px 8px;
+          margin: 5px;
+          background-color: white;
+          font-size: 13px;
+          color: #cc6600;
+          margin-left: 20px;
+          border: 0px;
+          border-radius: 8px;
+        }
+        .small_btn:hover{
+          cursor: pointer;
+          background-color: #cc6600;
+          color: white;
+        }
+        .bar{
+          height: 32px;
+          width: 100%;
+          border-bottom: 2px solid black;
+        }
+
         .inner{
-            padding: 12px;
+            padding: 3%;
+        }
+        .list_div{
+          overflow-y: scroll;
+          height: 500px;
+          width: 94%;
         }
         .left{
             flex: 2;
@@ -82,8 +128,7 @@
         .right{
             flex: 4;
             background-color: #ffc266;
-            height: 500px;
-            overflow: auto;
+
         }
         @media (max-width:800px){
             .wrapper{
@@ -104,10 +149,17 @@
 
 
             </div>
-            <div class="inner right">
+            <div class="right">
+              <div class="bar">
+                <button id="sort" title="alphabetical order" class="small_btn">
+                   &#8639&#8642 Sort
+                </button>
+              </div>
+              <div class=" inner list_div">
                 <ul id="list">
 
                 </ul>
+              </div>
             </div>
         </div>
         <script src="To_Do_List.js"></script>
