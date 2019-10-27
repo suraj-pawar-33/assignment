@@ -164,10 +164,10 @@ function init(){
       data = data.filter(function(item){
         return (item.id != num);
       });
-      let i = 0;
+      counter = 0;
       data.forEach((item) => {
-        ul.childNodes[i].id = i;
-        item.id = i++;
+        ul.childNodes[counter].id = counter;
+        item.id = counter++;
       });
       //to remove the empty cells from the array
       console.log("after delete :",data);
