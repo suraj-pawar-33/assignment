@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', init);
 
 function init(){
-  var add_btn = document.getElementById("add-btn");
-  var input_btn = document.getElementById("element");
-
-  input_btn.addEventListener('keypress', checkEnter);
-  add_btn.addEventListener('click', createList);
 
   var counter = 0;
   var ul = document.getElementById("list");
   var input = "";
   var data = [];
+
+  var add_btn = document.getElementById("add-btn");
+  var input_btn = document.getElementById("element");
+
+  input_btn.addEventListener('keyup', checkEnter);
+  add_btn.addEventListener('click', createList);
 
 
   function Elements(id, element){
@@ -18,8 +19,6 @@ function init(){
       this.element = element;
       this.pos = 0;
   }
-
-
 
   function checkEnter(ev){
 
@@ -95,7 +94,7 @@ function init(){
       return li;
   }
   function removeElement(ev){
-      if(ev.target.className == 'delete_btn'){
+      if(ev.target.p == 'delete_btn'){
         ev.currentTarget.remove();
         removeData(ev.currentTarget.id);
       }
@@ -103,7 +102,7 @@ function init(){
 
   function getCheckBox(){
       let check = document.createElement("span");
-      check.className = 'check_btn';
+      check.p = 'check_btn';
       check.innerHTML = "";
       check.addEventListener('click', togglecheck);
       return check;
@@ -120,7 +119,7 @@ function init(){
 
   function getDelete(){
       let deleteBtn = document.createElement("span");
-      deleteBtn.className = "delete_btn";
+      deleteBtn.p = "delete_btn";
       deleteBtn.innerHTML = "&#10006";
       deleteBtn.addEventListener('click', nothing);
       return deleteBtn;
