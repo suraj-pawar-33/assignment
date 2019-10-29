@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pizza time</title>
+    <link rel="stylesheet" href="pizza.css">
+    <script src="pizza.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="poster">
+        <div class="header">
+          <ul  id="ul_1" class="header_ul">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Reservation</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+          <ul id="ul_2" class="header_ul">
+            <li><a href="#">Cart icon</a></li>
+            <li><a href="#">0 items-$0</a></li>
+          </ul>
+        </div>
+        <div class="header heading">
+          <h1>Power Pizza</h1>
+          <p>B'cos one is never enough</p>
+        </div>
+      </div><br>
+      <hr>
+      <div class="container">
+        <div class="filter-container">
+        <div class="filter">
+          <div class="parts">
+            <h2>Cart</h2>
+            <div class="smallcart">
+              <div>
+                <div>
+
+                </div>
+              </div>
+              <div>
+                <span>&times;</span>
+              </div>
+
+            </div>
+          </div>
+          <hr class="dashed">
+
+          <div class="parts">
+            <p>Subtotal:<span class="price">$160</span></p>
+            <p>With Discount:<span class="price">$140</span></p>
+            <button id="view_cart" type="button" class="cart_btn red" name="button">View cart</button>
+            <button type="button" class="cart_btn red" name="button">Check Out</button>
+          </div>
+          <hr class="dashed">
+          <div class="parts">
+
+          </div>
+        </div>
+        </div>
+
+
+
+        <div class="list">
+          <button class="btn" id='sort' type="button" name="button">Sort</button>
+          <hr class="dashed">
+
+          <div id="0" class="pizza">
+            <div class="left">
+              <div class="circle" style="background-image:url('img/Margherit.jpg')">
+              </div>
+            </div>
+            <div class="right">
+              <h2>Margherita</h2>
+              <p>A hugely popular margherita, with a deliciously tangy single cheese topping</p>
+              <div>
+                <span class="price">400$</span>
+                <span class="quantity"><span>&lt</span><h4>1</h4><span>&gt</span></span>
+              </div>
+                <button class="cart_btn green">ADD TO CART</button>
+
+            </div>
+          </div>
+
+          <div id="1" class="pizza">
+            <div class="left">
+              <div class="circle" style="background-image:url('img/Non-Veg_Supreme.jpg')">
+              </div>
+            </div>
+            <div class="right">
+              <h2>Non Veg Supreme</h2>
+              <p>Bite into supreme delight of Black Olives, Onions, Grilled Mushrooms, Pepper BBQ Chicken, Peri-Peri Chicken, Grilled Chicken Rashers</p>
+              <div>
+                <span class="price">150$</span>
+                <span class="quantity"><span>&lt</span><h4>1</h4><span>&gt</span></span>
+              </div>
+                <button class="cart_btn green">ADD TO CART</button>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+<!-- Modal start-->
+
+    <div id="Cart" class="modal">
+      <div class="modal-box">
+        <span id="close_modal"class="close">&times;</span>
+        <div class="cart-inner">
+          <ul class="red_ul">
+            <li></li>
+            <li></li>
+            <li>Product</li>
+            <li>Price</li>
+            <li>Discount</li>
+            <li>Quantity</li>
+          </ul>
+
+          <ul class="white_ul">
+            <li><p class="small_close">&times;</p></li>
+            <li><div style="background-image:url('img/Dominator.jpg')">
+            </div></li>
+            <li><p>Chicken Dominator</p></li>
+            <li><p>180$</p></li>
+            <li><p>10%</p></li>
+            <li>
+              <span class="quantity"><span>&#8896;</span><h4>1</h4><span>&#8897;</span>
+              </span>
+            </li>
+          </ul>
+
+          <ul class="white_ul">
+            <li><p class="small_close">&times;</p></li>
+            <li><div style="background-image:url('img/Chicken_Fiesta.jpg')">
+            </div></li>
+            <li><p>Chicken Fiesta</p></li>
+            <li><p>290$</p></li>
+            <li><p>10%</p></li>
+            <li>
+              <span class="quantity"><span>&#8896;</span><h4>1</h4><span>&#8897;</span>
+              </span>
+            </li>
+          </ul>
+
+          <ul class="white_ul">
+            <li><p class="small_close">&times;</p></li>
+            <li><div style="background-image:url('img/Chicken_Fiesta.jpg')">
+            </div></li>
+            <li><p>Chicken Fiesta</p></li>
+            <li><p>290$</p></li>
+            <li><p>10%</p></li>
+            <li>
+              <span class="quantity"><span>&#8896;</span><h4>1</h4><span>&#8897;</span>
+              </span>
+            </li>
+          </ul>
+          <ul class="white_ul">
+            <li><p class="small_close">&times;</p></li>
+            <li><div style="background-image:url('img/Chicken_Fiesta.jpg')">
+            </div></li>
+            <li><p>Chicken Fiesta</p></li>
+            <li><p>290$</p></li>
+            <li><p>10%</p></li>
+            <li>
+              <span class="quantity"><span>&#8896;</span><h4>1</h4><span>&#8897;</span>
+              </span>
+            </li>
+          </ul>
+
+
+
+        </div>
+        <div class="cart-inner down">
+          <div>
+            <p>Subtotal: </p><span class="price">450$</span>
+          </div>
+          <div>
+            <p>Total: </p><span class="price">400$</span>
+          </div>
+          <button type="button" class="cart_btn red" name="button">Proceed to Checkout</button>
+
+        </div>
+      </div>
+    </div>
+  <!-- Modal end-->
+  </body>
+</html>

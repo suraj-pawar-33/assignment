@@ -1,0 +1,52 @@
+{
+  "pizzaList": [
+    {
+      "id": 1,
+      "name": "Margherita",
+      "price": 400,
+      "description": "A hugely popular margherita, with a deliciously tangy single cheese topping",
+      "imageUrl": "https://www.dominos.co.in/files/items/Margherit.jpg",
+      "discount": 10
+    },
+    {
+      "id": 2,
+      "name": "Double Cheese Margheritta",
+      "price": 100,
+      "description": "The ever-popular Margherita - loaded with extra cheese... oodies of it!",
+      "imageUrl": "https://www.dominos.co.in/files/items/Farmhouse.jpg",
+      "discount": 20
+    },
+    {
+      "id": 3,
+      "name": "Chicken Golden Delight",
+      "price": 300,
+      "description": "Mmm! Barbeque chicken with a topping of golden corn loaded with extra cheese. Worth its weight in gold!",
+      "imageUrl": "https://www.dominos.co.in/files/items/Chicken_Golden_Delight.jpg",
+      "discount": 10
+    },
+    {
+      "id": 4,
+      "name": "Non Veg Supreme",
+      "price": 150,
+      "description": "Bite into supreme delight of Black Olives, Onions, Grilled Mushrooms, Pepper BBQ Chicken, Peri-Peri Chicken, Grilled Chicken Rashers",
+      "imageUrl": "https://www.dominos.co.in/files/items/Non-Veg_Supreme.jpg",
+      "discount": 10
+    },
+    {
+      "id": 5,
+      "name": "Chicken Dominator",
+      "price": 180,
+      "description": "Treat your taste buds with Double Pepper Barbecue Chicken, Peri-Peri Chicken, Chicken Tikka & Grilled Chicken Rashers",
+      "imageUrl": "https://www.dominos.co.in/files/items/Dominator.jpg",
+      "discount": 10
+    },
+    {
+      "id": 6,
+      "name": "Chicken Fiesta",
+      "price": 290,
+      "description": "Dominos introduces 'Chicken Fiesta' an exotic new Pizza. Topped with Chunky Chicken, Capsicum & Onions.",
+      "imageUrl": "https://www.dominos.co.in/files/items/Chicken_Fiesta.jpg",
+      "discount": 10
+    }
+  ]
+}
