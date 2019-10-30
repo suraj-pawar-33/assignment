@@ -355,7 +355,7 @@ p.small_close{
 p.small_close:hover{
   cursor: pointer;
 }
-.cart-inner li div{
+.white_ul li div{
   height: 100px;
   width: 100px;
   border-radius: 50%;
