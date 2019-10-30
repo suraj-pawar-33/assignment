@@ -59,10 +59,42 @@ class Pizza {
     this.imageUrl = obj.imageUrl;
     this.discount = obj.discount;
     this.quantity = 1;
-
-
-    this.h4 = document.createElement("h4");
     this.inCart = false;
+
+    var h4_main = document.createElement("h4");
+    var h4_cart = document.createElement("h4");
+
+    this.getMainH4 = function(){
+      h4_main.innerHTML = this.quantity;
+      return h4_main;
+    };
+    this.getCartH4 = function(){
+      h4_cart.innerHTML = this.quantity;
+      return h4_cart;
+    };
+    this.setMainH4 = function(){
+      h4_main.innerHTML = this.quantity;
+    };
+    this.setCartH4 = function(){
+      h4_cart.innerHTML = this.quantity;
+    };
+
+    var smalldiv;
+    var cartUl;
+
+    this.getSmDiv = function(){
+      return smalldiv;
+    };
+    this.getCartUl = function(){
+      return cartUl;
+    };
+    this.setSmDiv = function(div){
+      smalldiv = div;
+    };
+    this.setCartUl = function(ul){
+      return cartUl = ul;
+    };
+
   }
   discPrice() {
     return this.price - ((this.discount / 100 )*this.price);
@@ -107,9 +139,14 @@ class Pizza {
     btn.innerHTML = "ADD TO CART";
     btn.addEventListener('click', (ev) => {
       if (!this.inCart) {
-        let cartDiv = document.getElementById("cart_inner");
-        cartDiv.appendChild(this.createUl());
         this.inCart = true;
+        let cartDiv = document.getElementById("cart_inner");
+        this.setCartUl(this.createUl());
+        cartDiv.appendChild(this.getCartUl());
+
+        this.setSmDiv(this.smallDiv())
+        let smallcart = document.getElementById("smallcart");
+        smallcart.appendChild(this.getSmDiv());
       }
 
     });
@@ -141,7 +178,7 @@ class Pizza {
     span.addEventListener('click', (ev) => {
       if(this.quantity > 1){
         this.quantity -= 1;
-        this.setQuantity(this.quantity);
+        this.setQuantity();
       }
     });
     return span;
@@ -151,16 +188,21 @@ class Pizza {
     span.innerHTML = "&gt;";
     span.addEventListener('click', (ev) => {
       this.quantity += 1;
-      this.setQuantity(this.quantity);
+      this.setQuantity();
     });
     return span;
   }
   heading4(){
-    this.h4.innerHTML = this.quantity;
-    return this.h4;
+    if(this.inCart){
+      return this.getCartH4();
+    }else {
+      return this.getMainH4();
+    }
+
   }
   setQuantity(num){
-    this.h4.innerHTML = this.quantity;
+    this.setCartH4();
+    this.setMainH4();
   }
 
 // For In Cart List Of Pizza
@@ -177,6 +219,7 @@ class Pizza {
     ul.addEventListener('click', (ev) => {
       if(ev.target.myCode == 45){
         ev.currentTarget.remove();
+        this.getSmDiv().remove();
         this.quantity = 1;
       }
     });
@@ -235,6 +278,51 @@ class Pizza {
   getPara(){
     let p = document.createElement('p');
     return p;
+  }
+
+  //for small list of pizza.
+
+  smallDiv(){
+    let div = this.getDiv();
+    div.classList.add("smallcart");
+
+    let div2 = this.getDiv();
+    let p = this.getPara();
+    p.innerHTML = this.name;
+
+    div2.appendChild(this.getSpan());
+    div2.appendChild(p);
+
+    let circle = this.createCircleDiv();
+    circle.classList.remove("circle");
+    let div3 = this.getDiv();
+    div3.appendChild(circle);
+
+    div.appendChild(div3);
+    div.appendChild(div2);
+
+    div.addEventListener('click', (ev) => {
+      if(ev.target.myCode == 45){
+        ev.currentTarget.remove();
+        this.getCartUl().remove();
+        this.quantity = 1;
+      }
+    });
+
+    return div;
+  }
+  getSpan(){
+    let span = document.createElement('span');
+    span.innerHTML = "&times;"
+    span.addEventListener('click', (ev) => {
+      this.inCart = false;
+    });
+    span.myCode = 45;
+    return span;
+  }
+  getDiv(){
+    let div = document.createElement('div');
+    return div;
   }
 
 }
