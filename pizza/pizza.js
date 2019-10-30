@@ -5,10 +5,15 @@ function init() {
   var view_cart_btn = document.getElementById("view_cart");
   var close_modal_btn = document.getElementById("close_modal");
   var modal = document.getElementById("Cart");
+  let icon = document.getElementById("ul_2");
 
   view_cart_btn.addEventListener('click', showModal);
   close_modal_btn.addEventListener('click', closeModal);
   window.addEventListener('click', closeModal);
+  icon.addEventListener('click', (ev) => {modal.style.display = "block";});
+
+
+
 
   function showModal(ev) {
     modal.style.display = "block";
@@ -20,9 +25,17 @@ function init() {
   }
 
 getJsonData();
-}
+
+
+
+
+
+
 var pizzaArray = [];
 var count = 0;
+var cartArray = [];
+var cartCount = 0;
+
 console.log(pizzaArray);
 
 function getJsonData(){
@@ -63,6 +76,8 @@ class Pizza {
 
     var h4_main = document.createElement("h4");
     var h4_cart = document.createElement("h4");
+    var smalldiv;
+    var cartUl;
 
     this.getMainH4 = function(){
       h4_main.innerHTML = this.quantity;
@@ -78,9 +93,6 @@ class Pizza {
     this.setCartH4 = function(){
       h4_cart.innerHTML = this.quantity;
     };
-
-    var smalldiv;
-    var cartUl;
 
     this.getSmDiv = function(){
       return smalldiv;
@@ -139,12 +151,13 @@ class Pizza {
     btn.innerHTML = "ADD TO CART";
     btn.addEventListener('click', (ev) => {
       if (!this.inCart) {
+        toCartArray(this.id, this.price, this.discPrice(), this.quantity);
         this.inCart = true;
         let cartDiv = document.getElementById("cart_inner");
         this.setCartUl(this.createUl());
         cartDiv.appendChild(this.getCartUl());
 
-        this.setSmDiv(this.smallDiv())
+        this.setSmDiv(this.smallDiv());
         let smallcart = document.getElementById("smallcart");
         smallcart.appendChild(this.getSmDiv());
       }
@@ -161,7 +174,7 @@ class Pizza {
   createPriceSpan(){
     let span = document.createElement('span');
     span.classList.add("price");
-    span.innerHTML = "$" + this.price;
+    span.innerHTML = "&#8377;" + this.price;
     return span;
   }
   createQuaSpan(){
@@ -180,6 +193,9 @@ class Pizza {
         this.quantity -= 1;
         this.setQuantity();
       }
+      if(this.inCart){
+        toCartArray(this.id, this.price, this.discPrice(), this.quantity);
+      }
     });
     return span;
   }
@@ -187,8 +203,14 @@ class Pizza {
     let span = document.createElement('span');
     span.innerHTML = "&gt;";
     span.addEventListener('click', (ev) => {
-      this.quantity += 1;
-      this.setQuantity();
+      if(this.quantity < 20){
+        this.quantity += 1;
+        this.setQuantity();
+      }
+      if(this.inCart){
+        toCartArray(this.id, this.price, this.discPrice(), this.quantity);
+      }
+
     });
     return span;
   }
@@ -233,6 +255,7 @@ class Pizza {
     p.myCode = 45;
     p.addEventListener('click', (ev) => {
         this.inCart = false;
+        deleteFromCart(this.id);
     });
     li.appendChild(p);
     return li;
@@ -254,14 +277,14 @@ class Pizza {
   priceLi(){
     let li = this.getLi();
     let p = this.getPara();
-    p.innerHTML = this.price;
+    p.innerHTML = "&#8377;"+this.price;
     li.appendChild(p);
     return li;
   }
   discLi(){
     let li = this.getLi();
     let p = this.getPara();
-    p.innerHTML = this.discPrice();
+    p.innerHTML = this.discount+"%";
     li.appendChild(p);
     return li;
   }
@@ -316,6 +339,7 @@ class Pizza {
     span.innerHTML = "&times;"
     span.addEventListener('click', (ev) => {
       this.inCart = false;
+      deleteFromCart(this.id);
     });
     span.myCode = 45;
     return span;
@@ -324,5 +348,79 @@ class Pizza {
     let div = document.createElement('div');
     return div;
   }
+
+}
+
+function Element(id, price, discPrice, quantity){
+    this.id = id;
+    this.price = price;
+    this.discPrice = discPrice;
+    this.quantity = quantity;
+}
+
+function toCartArray(id, price, discPrice, quantity){
+
+  let present = cartArray.some((item) => {
+    if(item.id == id){
+      item.quantity = quantity;
+    }
+    return item.id == id;
+  });
+  if(!present){
+    cartArray[cartCount] = new Element(id, price, discPrice, quantity);
+    cartCount++;
+  }
+    console.log(cartArray);
+    calcCost();
+}
+function deleteFromCart(id){
+  cartArray = cartArray.filter((items) => {
+    return (items.id != id);
+  });
+  cartCount--;
+  console.log(cartArray);
+  calcCost();
+}
+
+function calcCost(){
+  let normCost = 0;
+  let discoCost = 0;
+  let othCost = 0;
+  let len = cartArray.length;
+  let dCount = 0;
+
+
+  for(i = 0; i < len; i++){
+      dCount += 1;
+    if(dCount < 4){
+      discoCost += cartArray[i].discPrice * cartArray[i].quantity;
+      normCost += cartArray[i].price * cartArray[i].quantity;
+    }else {
+      discoCost += cartArray[i].price * cartArray[i].quantity;
+      normCost += cartArray[i].price * cartArray[i].quantity;
+    }
+  }
+    showCost(normCost, discoCost, othCost);
+
+}
+
+function showCost(normCost, discoCost, othCost){
+  let total_1 = document.getElementById("total_1");
+  total_1.innerHTML = "&#8377;" + normCost;
+
+  let total_2 = document.getElementById("total_2");
+  total_2.innerHTML = "&#8377;" + normCost;
+
+  let disc_1 = document.getElementById("disc_1");
+  disc_1.innerHTML = "&#8377;" +( discoCost + othCost);
+
+  let disc_2 = document.getElementById("disc_2");
+  disc_2.innerHTML = "&#8377;" + (discoCost + othCost);
+
+  let a = document.getElementById("icontext");
+  a.innerHTML = cartCount + "items-&#8377;"+ (discoCost + othCost);
+
+}
+
 
 }
