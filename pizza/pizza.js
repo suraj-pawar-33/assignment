@@ -5,7 +5,8 @@ function init() {
   var view_cart_btn = document.getElementById("view_cart");
   var close_modal_btn = document.getElementById("close_modal");
   var modal = document.getElementById("Cart");
-  let icon = document.getElementById("ul_2");
+  var icon = document.getElementById("ul_2");
+  var msg = document.getElementById("message");
 
   view_cart_btn.addEventListener('click', showModal);
   close_modal_btn.addEventListener('click', closeModal);
@@ -73,6 +74,7 @@ class Pizza {
     this.discount = obj.discount;
     this.quantity = 1;
     this.inCart = false;
+    this.type = obj.type;
 
     var h4_main = document.createElement("h4");
     var h4_cart = document.createElement("h4");
@@ -124,6 +126,18 @@ class Pizza {
     let div = document.createElement('div');
     div.classList.add("left");
     div.appendChild(this.createCircleDiv());
+    div.appendChild(this.createTypeDiv());
+    return div;
+  }
+  createTypeDiv(){
+    let div = document.createElement('div');
+    div.classList.add("type_div");
+    if(this.type == "veg"){
+      div.classList.add("veg");
+    }else {
+      div.classList.add("nonveg");
+    }
+    div.innerHTML = '<svg><circle cx="50%" cy="50%" r="37%"/><rect width="100%" height="100%"/></svg>'
     return div;
   }
   createRightDiv(){
@@ -222,7 +236,7 @@ class Pizza {
     }
 
   }
-  setQuantity(num){
+  setQuantity(){
     this.setCartH4();
     this.setMainH4();
   }
@@ -243,6 +257,7 @@ class Pizza {
         ev.currentTarget.remove();
         this.getSmDiv().remove();
         this.quantity = 1;
+        this.setQuantity();
       }
     });
     return ul;
@@ -329,6 +344,7 @@ class Pizza {
         ev.currentTarget.remove();
         this.getCartUl().remove();
         this.quantity = 1;
+        this.setQuantity();
       }
     });
 
@@ -385,26 +401,30 @@ function deleteFromCart(id){
 function calcCost(){
   let normCost = 0;
   let discoCost = 0;
-  let othCost = 0;
   let len = cartArray.length;
   let dCount = 0;
 
 
   for(i = 0; i < len; i++){
-      dCount += 1;
-    if(dCount < 4){
-      discoCost += cartArray[i].discPrice * cartArray[i].quantity;
-      normCost += cartArray[i].price * cartArray[i].quantity;
-    }else {
-      discoCost += cartArray[i].price * cartArray[i].quantity;
-      normCost += cartArray[i].price * cartArray[i].quantity;
-    }
+    let loops = cartArray[i].quantity + 1;
+
+      for(j = 1; j < loops ; j++){
+          if(dCount < 3){
+            msg.classList.remove("anime");
+              discoCost += cartArray[i].discPrice;
+              dCount++;
+          }else {
+            msg.classList.add("anime");
+              discoCost += cartArray[i].price;
+          }
+      }
+    normCost += cartArray[i].price * cartArray[i].quantity;
   }
-    showCost(normCost, discoCost, othCost);
+    showCost(normCost, discoCost);
 
 }
 
-function showCost(normCost, discoCost, othCost){
+function showCost(normCost, discoCost){
   let total_1 = document.getElementById("total_1");
   total_1.innerHTML = "&#8377;" + normCost;
 
@@ -412,13 +432,13 @@ function showCost(normCost, discoCost, othCost){
   total_2.innerHTML = "&#8377;" + normCost;
 
   let disc_1 = document.getElementById("disc_1");
-  disc_1.innerHTML = "&#8377;" +( discoCost + othCost);
+  disc_1.innerHTML = "&#8377;" +(discoCost);
 
   let disc_2 = document.getElementById("disc_2");
-  disc_2.innerHTML = "&#8377;" + (discoCost + othCost);
+  disc_2.innerHTML = "&#8377;" + (discoCost);
 
   let a = document.getElementById("icontext");
-  a.innerHTML = cartCount + "items-&#8377;"+ (discoCost + othCost);
+  a.innerHTML = cartCount + "items-&#8377;"+ (discoCost);
 
 }
 

@@ -12,7 +12,9 @@
 ::-webkit-scrollbar-thumb {
   background: #ccc;
 }
-
+.icon{
+  width: 20px;
+}
 
 .wrapper{
   width: 100%;
@@ -44,6 +46,17 @@
 
 #ul_2{
   float: right;
+}
+#carticon{
+  width: 30px;
+  height: 30px;
+}
+#path815{
+  fill:#ffffff;
+  fill-opacity:1;
+}
+#path815:hover{
+  fill:#009900;
 }
 .header a{
   text-decoration: none;
@@ -269,6 +282,37 @@ hr.dashed{
   width: 200px;
   border-radius: 50%;
 }
+.type_div{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  left: 10px;
+  top: -20%;
+}
+
+.veg svg, .nonveg svg{
+  height: 100%;
+  width: 100%;
+}
+.veg rect, .nonveg rect{
+  fill: none;
+  stroke-width: 15%;
+}
+.veg rect{
+  stroke: green;
+}
+.nonveg rect{
+  stroke: red;
+}
+ .veg circle, .nonveg circle{
+  stroke-width: 0;
+ }
+ .veg circle{
+   fill: green;
+ }
+.nonveg circle{
+  fill: red;
+}
 
 /* Modal css*/
 .modal{
@@ -372,4 +416,28 @@ p.small_close:hover{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.message{
+  width: 20%;
+  padding: 20px;
+  background-color: rgba(0,99,0,0.8);
+  border-radius: 5px;
+  color: white;
+  position: fixed;
+  bottom: 100px;
+  right:-40%;
+  z-index: 1;
+
+}
+.anime{
+  animation-name: slide;
+  animation-duration: 4s;
+}
+
+@keyframes slide {
+  0%{right:-40%;}
+  30%{right:20px;}
+  90%{right:20px;}
+  100%{right:-40%;}
 }
