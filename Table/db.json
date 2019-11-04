@@ -1,0 +1,196 @@
+{
+  "data": [
+    {
+      "name": "Harrison Ford",
+      "movie": "Star Wars",
+      "character": "Han Solo",
+      "movieRating": 8,
+      "moreDetails": [
+        {
+          "name": "Harrison Ford",
+          "movie": "Star Wars",
+          "character": "Han Solo",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "animation",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Carrie Fisher",
+          "movie": "Star Wars",
+          "character": "Princess Leia",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "Horror",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Al Pacino",
+          "movie": "The Godfather",
+          "character": "Michael Corleone",
+          "movieRating": "9",
+          "moreDetails": {
+            "genre": "Action",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Robert De Niro",
+          "movie": "Goodfellas",
+          "character": "Jimmy Conway",
+          "movieRating": 7.8,
+          "moreDetails": {
+            "genre": "Comedy",
+            "language": "English"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Carrie Fisher",
+      "movie": "Star Wars",
+      "character": "Princess Leia",
+      "movieRating": 8,
+      "moreDetails": [
+        {
+          "name": "Harrison Ford",
+          "movie": "Star Wars",
+          "character": "Han Solo",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "animation",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Carrie Fisher",
+          "movie": "Star Wars",
+          "character": "Princess Leia",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "Horror",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Al Pacino",
+          "movie": "The Godfather",
+          "character": "Michael Corleone",
+          "movieRating": "9",
+          "moreDetails": {
+            "genre": "Action",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Robert De Niro",
+          "movie": "Goodfellas",
+          "character": "Jimmy Conway",
+          "movieRating": 7.8,
+          "moreDetails": {
+            "genre": "Comedy",
+            "language": "English"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Al Pacino",
+      "movie": "The Godfather",
+      "character": "Michael Corleone",
+      "movieRating": "9",
+      "moreDetails": [
+        {
+          "name": "Harrison Ford",
+          "movie": "Star Wars",
+          "character": "Han Solo",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "animation",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Carrie Fisher",
+          "movie": "Star Wars",
+          "character": "Princess Leia",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "Horror",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Al Pacino",
+          "movie": "The Godfather",
+          "character": "Michael Corleone",
+          "movieRating": "9",
+          "moreDetails": {
+            "genre": "Action",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Robert De Niro",
+          "movie": "Goodfellas",
+          "character": "Jimmy Conway",
+          "movieRating": 7.8,
+          "moreDetails": {
+            "genre": "Comedy",
+            "language": "English"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Robert De Niro",
+      "movie": "Goodfellas",
+      "character": "Jimmy Conway",
+      "movieRating": 7.8,
+      "moreDetails": [
+        {
+          "name": "Harrison Ford",
+          "movie": "Star Wars",
+          "character": "Han Solo",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "animation",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Carrie Fisher",
+          "movie": "Star Wars",
+          "character": "Princess Leia",
+          "movieRating": 8,
+          "moreDetails": {
+            "genre": "Horror",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Al Pacino",
+          "movie": "The Godfather",
+          "character": "Michael Corleone",
+          "movieRating": "9",
+          "moreDetails": {
+            "genre": "Action",
+            "language": "English"
+          }
+        },
+        {
+          "name": "Robert De Niro",
+          "movie": "Goodfellas",
+          "character": "Jimmy Conway",
+          "movieRating": 7.8,
+          "moreDetails": {
+            "genre": "Comedy",
+            "language": "English"
+          }
+        }
+      ]
+    }
+  ]
+}
