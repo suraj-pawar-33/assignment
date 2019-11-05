@@ -50,6 +50,7 @@ class Row {
         td.classList.add('link');
         td.addEventListener('click', (ev) => {
           console.log('clicked' , ev.target);
+          readData(this.obj[item]);
         });
       }else {
         td.innerHTML = this.obj[item];
@@ -78,16 +79,17 @@ class Table {
     this.tArr.forEach((item) => {
       this.content[i] = new Row(item);
       this.table.appendChild(this.content[i].tBody());
-                                        console.log("rows added");
+      i++;
+                                                        console.log("rows added");
     });
   }
 
   addRow(){
-    this.content[0] = new Row(this.tArr[0]);
+    this.content[0] = new Row(this.tArr);
     this.table.appendChild(this.content[0].tHead());
-    this.content[1] = new Row(this.tArr[1]);
-    this.table.appendChild(this.content[i].tBody());
-                                  console.log("row added");
+    this.content[1] = new Row(this.tArr);
+    this.table.appendChild(this.content[1].tBody());
+                                                    console.log("row added");
   }
 }
 
