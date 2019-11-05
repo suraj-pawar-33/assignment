@@ -24,8 +24,8 @@ function init(){
 
 
 
-var div = document.getElementById('main');
-
+var wrapper = document.getElementById('main');
+var counter = 1;
 
 class Row {
   constructor(obj) {
@@ -101,7 +101,7 @@ class Table {
   .then(readThis);
   function readThis(text) {
     let data = JSON.parse(text);
-    readData(data.data);
+    readData(data);
   }
 
 function readData(item) {
@@ -109,28 +109,46 @@ function readData(item) {
     let table = new Table(item);
                                           console.log("table created");
     table.addRow();
-    div.appendChild(table.getTable());
+    setDiv(table.getTable());
   }else if(checkTypeOf(item) == "arr"){
     let table = new Table(item);
                                           console.log("tables created");
     table.addRows();
-    div.appendChild(table.getTable());
+    setDiv(table.getTable());
   }
 }
 
-function readObj(item){
-  for(let value in item){
-    console.log(value,"-", item[value]);
-    readData(item[value]);
-  }
+function setDiv(elem){
+  let div = getDiv();
+  div.appendChild(elem);
+  wrapper.appendChild(div);
 }
 
-function readArray(data){
-  data.forEach(function(value){
-    readData(value);
+function getDiv(){
+  let div = document.createElement("div");
+  div.classList.add('table_box');
+  let span = document.createElement("span");
+  span.id = "close_table";
+  span.classList.add("close");
+  span.innerHTML = "&times;"
+  span.addEventListener("click", () => {
+    //nothing
   });
 
+  div.appendChild(span);
+  div.style.paddingTop = (50 * counter) + "px";
+  div.style.zIndex = counter + "";
+  counter++;
+
+  div.addEventListener('click', (ev) => {
+    if(ev.target == span){
+      ev.currentTarget.remove();
+      counter--;
+    }
+  });
+  return div;
 }
+
 
 function checkTypeOf(value) {
   if (value.length != undefined && typeof value != "string") {

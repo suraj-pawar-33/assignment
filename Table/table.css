@@ -1,7 +1,11 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
 .wrapper{
-  width: 70%;
-  min-height: 900px;
-  margin: 0px auto;
+
   background-color: #eee;
 }
 table{
@@ -9,6 +13,7 @@ table{
   width: 100%;
   text-align: center;
   font-family: sans-serif;
+  background-color: #eee;
 }
 th{
   font-weight: bold;
@@ -25,4 +30,25 @@ tr:nth-child(2n+1){
   cursor: pointer;
   color: blue;
   font-weight: bold;
+}
+.table_box{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 60%;
+  min-height: 900px;
+  background-color: rgba(0,0,0,0.4);
+  height: auto;
+  border: 0;
+  padding-left: 20%;
+  padding-right: 20%;
+  border: 1px solid #888;
+}
+.close{
+  float: right;
+  font-size: 30px;
+  padding-right: 10px;
+}
+.close:hover{
+  cursor: pointer;
 }
