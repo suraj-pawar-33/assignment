@@ -36,9 +36,12 @@ class Row {
     for (var item in this.obj) {
       let th = document.createElement('th');
       th.innerHTML = item;
+      th.myVar = 29;
+      th.addEventListener("click", () => {
+        //nothing
+      })
       tr.appendChild(th);
     }
-                                      console.log("head row created");
     return tr;
   }
   tBody(){
@@ -49,7 +52,6 @@ class Row {
         td.innerHTML = item;
         td.classList.add('link');
         td.addEventListener('click', (ev) => {
-          console.log('clicked' , ev.target);
           readData(this.obj[item]);
         });
       }else {
@@ -57,7 +59,6 @@ class Row {
       }
       tr.appendChild(td);
     }
-                                          console.log("body row created");
     return tr;
   }
 }
@@ -70,30 +71,76 @@ class Table {
     this.content = [];
   }
   getTable(){
+    this.table.addEventListener("click", (ev) => {
+      if(ev.target.myVar == 29){
+        togleSort(this, ev.target.innerHTML);
+      }
+    })
     return this.table;
   }
-  addRows(){
-    let i = 1;
-    this.content[0] = new Row(this.tArr[0]);
-    this.table.appendChild(this.content[0].tHead());
+  setRows(){
+    let i = 0;
     this.tArr.forEach((item) => {
       this.content[i] = new Row(item);
-      this.table.appendChild(this.content[i].tBody());
       i++;
-                                                        console.log("rows added");
     });
+  }
+  setContent(content){
+    this.content = content;
+  }
+
+  addRows(){
+    this.table.innerHTML = "";
+    this.setHeader();
+    this.content.forEach((item) => {
+      this.table.appendChild(item.tBody());
+    });
+  }
+  setHeader(){
+    let header = new Row(this.tArr[0]);
+    this.table.appendChild(header.tHead());
   }
 
   addRow(){
+    let header = new Row(this.tArr);
+    this.table.appendChild(header.tHead());
     this.content[0] = new Row(this.tArr);
-    this.table.appendChild(this.content[0].tHead());
-    this.content[1] = new Row(this.tArr);
-    this.table.appendChild(this.content[1].tBody());
-                                                    console.log("row added");
+    this.table.appendChild(this.content[0].tBody());
   }
 }
+var assd = false;
+function togleSort(table, header){
+  if(assd == false){
+    sortRows(table, header)
+    assd = true;
+  }else {
+    unSortRows(table, header);
+    assd = false;
+  }
 
+}
 
+function sortRows(table, header){
+  let i = 0;
+  let newContent = table.content.sort((a, b) => {
+    if(a.obj[header] > b.obj[header]) return 1;
+    else if(a.obj[header] < b.obj[header]) return -1;
+    else return 0;
+  });
+  table.setContent(newContent);
+  table.addRows();
+}
+
+function unSortRows(table, header){
+  let i = 0;
+  let newContent = table.content.sort((a, b) => {
+    if(a.obj[header] < b.obj[header]) return 1;
+    else if(a.obj[header] > b.obj[header]) return -1;
+    else return 0;
+  });
+  table.setContent(newContent);
+  table.addRows();
+}
 
 
   fetch("https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db")
@@ -101,18 +148,18 @@ class Table {
   .then(readThis);
   function readThis(text) {
     let data = JSON.parse(text);
+    console.log("data received...");
     readData(data);
   }
 
 function readData(item) {
   if(checkTypeOf(item) == "obj"){
     let table = new Table(item);
-                                          console.log("table created");
     table.addRow();
     setDiv(table.getTable());
   }else if(checkTypeOf(item) == "arr"){
     let table = new Table(item);
-                                          console.log("tables created");
+    table.setRows();
     table.addRows();
     setDiv(table.getTable());
   }
