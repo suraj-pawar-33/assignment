@@ -4,3 +4,25 @@
   margin: 0px auto;
   background-color: #eee;
 }
+table{
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  font-family: sans-serif;
+}
+th{
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+}
+td{
+  padding: 10px;
+}
+tr:nth-child(2n+1){
+  background-color: #fff;
+}
+.link{
+  cursor: pointer;
+  color: blue;
+  font-weight: bold;
+}

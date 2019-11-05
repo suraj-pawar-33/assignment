@@ -1,17 +1,118 @@
-// ReadJSON function
-  fetch('https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db')
+document.addEventListener('DOMContentLoaded', init);
+
+function init(){
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var div = document.getElementById('main');
+
+
+class Row {
+  constructor(obj) {
+    this.obj = obj;
+  }
+  tHead(){
+    let tr = document.createElement('tr');
+    for (var item in this.obj) {
+      let th = document.createElement('th');
+      th.innerHTML = item;
+      tr.appendChild(th);
+    }
+                                      console.log("head row created");
+    return tr;
+  }
+  tBody(){
+    let tr = document.createElement('tr');
+    for (var item in this.obj) {
+      let td = document.createElement('td');
+      if (checkTypeOf(this.obj[item]) == "obj" || checkTypeOf(this.obj[item]) == "arr") {
+        td.innerHTML = item;
+        td.classList.add('link');
+        td.addEventListener('click', (ev) => {
+          console.log('clicked' , ev.target);
+        });
+      }else {
+        td.innerHTML = this.obj[item];
+      }
+      tr.appendChild(td);
+    }
+                                          console.log("body row created");
+    return tr;
+  }
+}
+
+
+class Table {
+  constructor(tArr) {
+    this.tArr = tArr;
+    this.table = document.createElement('table');
+    this.content = [];
+  }
+  getTable(){
+    return this.table;
+  }
+  addRows(){
+    let i = 1;
+    this.content[0] = new Row(this.tArr[0]);
+    this.table.appendChild(this.content[0].tHead());
+    this.tArr.forEach((item) => {
+      this.content[i] = new Row(item);
+      this.table.appendChild(this.content[i].tBody());
+                                        console.log("rows added");
+    });
+  }
+
+  addRow(){
+    this.content[0] = new Row(this.tArr[0]);
+    this.table.appendChild(this.content[0].tHead());
+    this.content[1] = new Row(this.tArr[1]);
+    this.table.appendChild(this.content[i].tBody());
+                                  console.log("row added");
+  }
+}
+
+
+
+
+  fetch("https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db")
   .then(response => response.text())
   .then(readThis);
   function readThis(text) {
     let data = JSON.parse(text);
-    readData(data);
+    readData(data.data);
   }
 
 function readData(item) {
   if(checkTypeOf(item) == "obj"){
-    readObj(item);
+    let table = new Table(item);
+                                          console.log("table created");
+    table.addRow();
+    div.appendChild(table.getTable());
   }else if(checkTypeOf(item) == "arr"){
-    readArray(item);
+    let table = new Table(item);
+                                          console.log("tables created");
+    table.addRows();
+    div.appendChild(table.getTable());
   }
 }
 
