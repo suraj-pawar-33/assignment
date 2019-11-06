@@ -7,36 +7,35 @@
 .wrapper{
 }
 table{
-  padding: 20px;
+  padding: 10px;
   width: 100%;
-  text-align: center;
   font-family: sans-serif;
   background-color: #eee;
+  border-collapse: collapse;
 }
+th, td{
+  border-bottom: 1px solid black;
+}
+
 th{
   font-weight: bold;
-  padding: 5px;
+  padding: 12px 10px;
   cursor: pointer;
+  overflow: auto;
+  background-color: black;
+  color: white;
 }
 th p{
   text-transform: uppercase;
+  text-align: left;
 }
-th input{
-  width: 70%;
-  height: 20px;
-  display: inline-block;
-}
-th span{
-  width: 24px;
-  height: 24px;
-  padding-top: 4px;
-}
+
 td{
   padding: 10px;
-}
-tr:nth-child(2n+1){
+  overflow: auto;
   background-color: #fff;
 }
+
 .link{
   cursor: pointer;
   color: blue;
@@ -44,48 +43,28 @@ tr:nth-child(2n+1){
 }
 .table_box{
   position: fixed;
-  left: 30%;
+  left: 0;
   top: 0;
-  width: 60%;
+  width: 90%;
   height: 700px;
   background-color: rgba(0,0,0,0.4);
   border: 0;
   padding-left: 5%;
   padding-right: 5%;
-  border: 1px solid #888;
   overflow: auto;
 }
 .close{
   float: right;
   font-size: 30px;
   padding-right: 10px;
-  color: black;
+  color: gray;
+}
+.tSearch{
+  width: 40%;
+  height: 26px;
+  font-size: 24px;
 }
 .close:hover{
   cursor: pointer;
   color: white;
-}
-.search{
-  width: 100%;
-  height: 30px;
-  font-size: 25px;
-}
-
-.search_box{
-  z-index: 10;
-  width: 26%;
-  padding: 2%;
-  background-color: #eee;
-}
-.results ul{
-  list-style: none;
-  border: 1px solid black;
-  margin-top: 10px;
-}
-.results h3{
-  text-transform: uppercase;
-}
-.results li{
-  display: inline-block;
-  padding-left: 10px;
 }
