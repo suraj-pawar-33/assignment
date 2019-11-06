@@ -11,6 +11,7 @@ var data = 0;
 class Row {
   constructor(obj) {
     this.obj = obj;
+    this.row = 0;
   }
   tHead(n, needs){
     let tr = document.createElement('tr');
@@ -24,13 +25,12 @@ class Row {
         //nothing
       });
       th.appendChild(p);
-
       tr.appendChild(th);
     }
     return tr;
   }
   tBody(){
-    let tr = document.createElement('tr');
+    this.row = document.createElement('tr');
     for (var item in this.obj) {
       let td = document.createElement('td');
       if (checkTypeOf(this.obj[item]) == "obj" || checkTypeOf(this.obj[item]) == "arr") {
@@ -42,9 +42,10 @@ class Row {
       }else {
         td.innerHTML = this.obj[item];
       }
-      tr.appendChild(td);
+      this.row.appendChild(td);
     }
-    return tr;
+
+    return this.row;
   }
 }
 
@@ -94,7 +95,71 @@ class Table {
     this.content[0] = new Row(this.tArr);
     this.table.appendChild(this.content[0].tBody());
   }
+
+  setDiv(){
+    let div = this.getDiv(true);
+    div.appendChild(this.getTable());
+    wrapper.appendChild(div);
+  }
+  setDivSmall(){
+    let div = this.getDiv(false);
+    div.appendChild(this.getTable());
+    wrapper.appendChild(div);
+  }
+
+  getDiv(needs){
+    let div = document.createElement("div");
+    div.classList.add('table_box');
+    let span = document.createElement("span");
+    span.id = "close_table";
+    span.classList.add("close");
+    span.innerHTML = "&times;"
+    span.addEventListener("click", () => {
+      //nothing
+    });
+
+    let inp = document.createElement('input');
+    inp.classList.add("tSearch");
+    inp.addEventListener("keyup", (ev) => {
+
+      let searchKey = ev.target.value.toString().toLowerCase();
+
+      for (let item of this.content) {
+        let notPresent = true;
+          for (var value in item.obj) {
+            let key = item.obj[value].toString().toLowerCase();
+              if(key.includes(searchKey)){
+                notPresent = false;
+              }
+          }
+          if(notPresent){
+            item.row.classList.add("display_none");
+          }else {
+            item.row.classList.remove("display_none");
+          }
+        }
+    });
+    if (needs) {
+      div.appendChild(inp);
+    }
+
+    div.appendChild(span);
+    div.style.paddingTop = (50 * counter) + "px";
+    div.style.zIndex = counter + "";
+    counter++;
+
+    div.addEventListener('click', (ev) => {
+      if(ev.target == span){
+        ev.currentTarget.remove();
+        counter--;
+      }
+    });
+    return div;
+  }
+
 }
+
+
 
 var assd = false;
 
@@ -144,49 +209,16 @@ function readData(item) {
   if(checkTypeOf(item) == "obj"){
     let table = new Table(item);
     table.addRow();
-    setDiv(table.getTable());
+    table.setDivSmall();
   }else if(checkTypeOf(item) == "arr"){
     let table = new Table(item);
     table.setRows();
     table.addRows();
-    setDiv(table.getTable());
+    table.setDiv();
   }
 }
 
-function setDiv(elem){
-  let div = getDiv();
-  div.appendChild(elem);
-  wrapper.appendChild(div);
-}
 
-function getDiv(){
-  let div = document.createElement("div");
-  div.classList.add('table_box');
-  let span = document.createElement("span");
-  span.id = "close_table";
-  span.classList.add("close");
-  span.innerHTML = "&times;"
-  span.addEventListener("click", () => {
-    //nothing
-  });
-
-  let inp = document.createElement('input');
-  inp.classList.add("tSearch");
-
-  div.appendChild(inp);
-  div.appendChild(span);
-  div.style.paddingTop = (50 * counter) + "px";
-  div.style.zIndex = counter + "";
-  counter++;
-
-  div.addEventListener('click', (ev) => {
-    if(ev.target == span){
-      ev.currentTarget.remove();
-      counter--;
-    }
-  });
-  return div;
-}
 
 
 function checkTypeOf(value) {

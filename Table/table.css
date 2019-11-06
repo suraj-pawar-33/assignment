@@ -17,6 +17,10 @@ th, td{
   border-bottom: 1px solid black;
 }
 
+.display_none{
+  display: none;
+}
+
 th{
   font-weight: bold;
   padding: 12px 10px;
@@ -47,7 +51,7 @@ td{
   top: 0;
   width: 90%;
   height: 700px;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
   border: 0;
   padding-left: 5%;
   padding-right: 5%;
