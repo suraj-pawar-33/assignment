@@ -26,17 +26,18 @@ function init(){
 
 var wrapper = document.getElementById('main');
 var counter = 1;
+var data = 0;
 
 class Row {
   constructor(obj) {
     this.obj = obj;
   }
-  tHead(){
+  tHead(n){
     let tr = document.createElement('tr');
     for (var item in this.obj) {
       let th = document.createElement('th');
       th.innerHTML = item;
-      th.myVar = 29;
+      th.myVar = n;
       th.addEventListener("click", () => {
         //nothing
       })
@@ -98,16 +99,17 @@ class Table {
   }
   setHeader(){
     let header = new Row(this.tArr[0]);
-    this.table.appendChild(header.tHead());
+    this.table.appendChild(header.tHead(29));
   }
 
   addRow(){
     let header = new Row(this.tArr);
-    this.table.appendChild(header.tHead());
+    this.table.appendChild(header.tHead(30));
     this.content[0] = new Row(this.tArr);
     this.table.appendChild(this.content[0].tBody());
   }
 }
+
 var assd = false;
 function togleSort(table, header){
   if(assd == false){
@@ -142,12 +144,78 @@ function unSortRows(table, header){
   table.addRows();
 }
 
+var searchArr = [];
+var sCount = 0;
+var seaValue = 0;
+var input = document.getElementById("search");
+var resultDiv = document.getElementById("results");
 
+input.addEventListener('keyup', (ev) => {
+  seaValue = ev.target.value.toLowerCase();
+  if(ev.keyCode == 13){
+    resultDiv.innerHTML = "";
+    saveAll(data);
+  }
+});
+
+
+
+function saveAll(item){
+
+  if(checkTypeOf(item) == "obj"){
+    readObj(item);
+  }else if(checkTypeOf(item) == "arr"){
+    readArray(item);
+  }
+}
+
+function readObj(item){
+  for(let value in item){
+    if (checkTypeOf(item[value]) == "obj" || checkTypeOf(item[value]) == "arr") {
+      saveAll(item[value]);
+    }else {
+
+      if(typeof item[value] == 'string'){
+        let p = item[value].toLowerCase();
+        if (p.includes(seaValue)) {
+          showResult(item);
+        }
+      }
+      else {
+        if (item[value] == seaValue) {
+          showResult(item);
+        }
+      }
+
+
+    }
+  }
+}
+
+function readArray(data){
+    data.forEach(function(value){
+      saveAll(value);
+    });
+  }
+
+  function showResult(item){
+    let ul = document.createElement('ul');
+    for (var value in item) {
+      if (checkTypeOf(item[value]) != "obj" && checkTypeOf(item[value]) != "arr") {
+        let li = document.createElement('li');
+        li.innerHTML = "<h3>"+ value +"</h3><p>"+ item[value] +"</p>";
+        ul.appendChild(li);
+      }
+    }
+    resultDiv.appendChild(ul);
+  }
+
+//read data starts
   fetch("https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db")
   .then(response => response.text())
   .then(readThis);
   function readThis(text) {
-    let data = JSON.parse(text);
+    data = JSON.parse(text);
     console.log("data received...");
     readData(data);
   }
