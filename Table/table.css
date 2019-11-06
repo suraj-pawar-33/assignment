@@ -15,9 +15,21 @@ table{
 }
 th{
   font-weight: bold;
-  text-transform: uppercase;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
+}
+th p{
+  text-transform: uppercase;
+}
+th input{
+  width: 70%;
+  height: 20px;
+  display: inline-block;
+}
+th span{
+  width: 24px;
+  height: 24px;
+  padding-top: 4px;
 }
 td{
   padding: 10px;

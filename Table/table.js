@@ -3,44 +3,49 @@ document.addEventListener('DOMContentLoaded', init);
 function init(){
 
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var wrapper = document.getElementById('main');
 var counter = 1;
 var data = 0;
+
+var colmSrchWord = 0;
+var colmHeader = 0;
 
 class Row {
   constructor(obj) {
     this.obj = obj;
   }
-  tHead(n){
+  tHead(n, needs){
     let tr = document.createElement('tr');
     for (var item in this.obj) {
       let th = document.createElement('th');
-      th.innerHTML = item;
-      th.myVar = n;
-      th.addEventListener("click", () => {
+      let p = document.createElement('p');
+
+      p.innerHTML = item;
+      p.myVar = n;
+      p.addEventListener("click", () => {
         //nothing
-      })
+      });
+      th.appendChild(p);
+      if(needs && checkTypeOf(this.obj[item]) != "obj" && checkTypeOf(this.obj[item]) != "arr"){
+
+        let inp = document.createElement('input');
+        let spn = document.createElement('span');
+        spn.innerHTML = "&#x1F50D;";
+        spn.myVar = 40;
+        inp.addEventListener("keyup", (ev) => {
+          if(typeof this.obj[item] == 'string'){
+              colmSrchWord = ev.target.value.toLowerCase();
+          }else {
+              colmSrchWord = ev.target.value;
+          }
+              colmHeader = p.innerHTML;
+              });
+        spn.addEventListener('click', (ev) => {
+          inp.value = "";
+        });
+        th.appendChild(inp);
+        th.appendChild(spn);
+      }
       tr.appendChild(th);
     }
     return tr;
@@ -76,7 +81,12 @@ class Table {
       if(ev.target.myVar == 29){
         togleSort(this, ev.target.innerHTML);
       }
-    })
+      if(ev.target.myVar == 40){
+        filterColumn(this);
+      }
+    });
+
+
     return this.table;
   }
   setRows(){
@@ -99,18 +109,37 @@ class Table {
   }
   setHeader(){
     let header = new Row(this.tArr[0]);
-    this.table.appendChild(header.tHead(29));
+
+    this.table.appendChild(header.tHead(29, true));
   }
 
   addRow(){
     let header = new Row(this.tArr);
-    this.table.appendChild(header.tHead(30));
+    this.table.appendChild(header.tHead(30, false));
     this.content[0] = new Row(this.tArr);
     this.table.appendChild(this.content[0].tBody());
   }
 }
 
+function filterColumn(table){
+
+  let newContent = table.content.filter((item) => {
+    let hValue = item.obj[colmHeader];
+    if(typeof hValue == 'string'){
+      hValue.toLowerCase();
+      return hValue.includes(colmSrchWord);
+    }else {
+      return hValue == colmSrchWord;
+    }
+
+  });
+
+  table.setContent(newContent);
+  table.addRows();
+}
+
 var assd = false;
+
 function togleSort(table, header){
   if(assd == false){
     sortRows(table, header)
@@ -119,7 +148,6 @@ function togleSort(table, header){
     unSortRows(table, header);
     assd = false;
   }
-
 }
 
 function sortRows(table, header){
@@ -277,3 +305,6 @@ function checkTypeOf(value) {
   }
 }
 //end
+
+
+}
