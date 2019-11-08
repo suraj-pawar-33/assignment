@@ -1,19 +1,23 @@
+
+
 document.addEventListener('DOMContentLoaded', init);
 
 function init(){
 
+  fetch("https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db")
+  .then(response => response.text())
+  .then(readThis);
+}
 
 var wrapper = document.getElementById('main');
 var counter = 1;
-var data = 0;
-
 
 class Row {
   constructor(obj) {
     this.obj = obj;
     this.row = 0;
   }
-  tHead(n, needs){
+  tHead(n){
     let tr = document.createElement('tr');
     for (var item in this.obj) {
       let th = document.createElement('th');
@@ -21,9 +25,7 @@ class Row {
 
       p.innerHTML = item;
       p.myVar = n;
-      p.addEventListener("click", () => {
-        //nothing
-      });
+      p.addEventListener("click", () => {});
       th.appendChild(p);
       tr.appendChild(th);
     }
@@ -39,7 +41,6 @@ class Row {
         td.classList.add('link');
         td.addEventListener('click', (ev) => {
           readData(this.obj[ev.target.innerHTML]);
-          console.log(ev.target.innerHTML);
         });
       }else {
         td.innerHTML = this.obj[item];
@@ -97,12 +98,12 @@ class Table {
 
   setHeader(){
     let header = new Row(this.tArr[0]);
-    this.table.appendChild(header.tHead(29, true));
+    this.table.appendChild(header.tHead(29));
   }
 
   addRow(){
     let header = new Row(this.tArr);
-    this.table.appendChild(header.tHead(30, false));
+    this.table.appendChild(header.tHead(30));
     this.content[0] = new Row(this.tArr);
     this.table.appendChild(this.content[0].tBody());
   }
@@ -126,9 +127,7 @@ class Table {
     span.id = "close_table";
     span.classList.add("close");
     span.innerHTML = "&times;"
-    span.addEventListener("click", () => {
-      //nothing
-    });
+    span.addEventListener("click", () => {});
 
     let inp = document.createElement('input');
     inp.classList.add("tSearch");
@@ -169,8 +168,6 @@ class Table {
     return div;
   }
 
-
-
   togleSort(header){
     if(this.assd == false){
       this.sortRows(header)
@@ -202,18 +199,15 @@ class Table {
   }
 }
 
-
-
-
 //read data starts
-  fetch("https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db")
-  .then(response => response.text())
-  .then(readThis);
-  function readThis(text) {
-    data = JSON.parse(text);
-    console.log("data received...");
-    readData(data);
+function readThis(text) {
+  let jsondata = JSON.parse(text);
+  console.log("data received...");
+  for (let item in jsondata) {
+    readData(jsondata[item]);
   }
+
+}
 
 function readData(item) {
   if(checkTypeOf(item) == "obj"){
@@ -240,5 +234,3 @@ function checkTypeOf(value) {
   }
 }
 //end
-
-}
