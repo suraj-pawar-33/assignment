@@ -38,7 +38,8 @@ class Row {
         td.innerHTML = item;
         td.classList.add('link');
         td.addEventListener('click', (ev) => {
-          readData(this.obj[item]);
+          readData(this.obj[ev.target.innerHTML]);
+          console.log(ev.target.innerHTML);
         });
       }else {
         td.innerHTML = this.obj[item];
@@ -111,6 +112,7 @@ class Table {
     div.appendChild(this.getTable());
     wrapper.appendChild(div);
   }
+
   setDivSmall(){
     let div = this.getDiv(false);
     div.appendChild(this.getTable());
@@ -203,9 +205,8 @@ class Table {
 
 
 
-
 //read data starts
-  fetch("https://my-json-server.typicode.com/suraj-pawar-33/newtable/db")
+  fetch("https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db")
   .then(response => response.text())
   .then(readThis);
   function readThis(text) {
@@ -224,12 +225,9 @@ function readData(item) {
     table.setRows();
     table.addRows();
     table.setDiv();
+
   }
 }
-
-
-
-
 function checkTypeOf(value) {
   if (value.length != undefined && typeof value != "string") {
     return "arr";
@@ -242,6 +240,5 @@ function checkTypeOf(value) {
   }
 }
 //end
-
 
 }
