@@ -29,6 +29,7 @@ class Row {
     }
     return tr;
   }
+
   tBody(){
     this.row = document.createElement('tr');
     for (var item in this.obj) {
@@ -55,11 +56,12 @@ class Table {
     this.tArr = tArr;
     this.table = document.createElement('table');
     this.content = [];
+    this.assd = false;
   }
   getTable(){
     this.table.addEventListener("click", (ev) => {
       if(ev.target.myVar == 29){
-        togleSort(this, ev.target.innerHTML);
+        this.togleSort(ev.target.innerHTML);
       }
     });
     return this.table;
@@ -77,12 +79,20 @@ class Table {
   }
 
   addRows(){
-    this.table.innerHTML = "";
     this.setHeader();
     this.content.forEach((item) => {
       this.table.appendChild(item.tBody());
     });
   }
+
+  showRows(){
+    this.table.innerHTML = "";
+    this.setHeader();
+    this.content.forEach((item) => {
+      this.table.appendChild(item.row);
+    });
+  }
+
 
   setHeader(){
     let header = new Row(this.tArr[0]);
@@ -157,46 +167,45 @@ class Table {
     return div;
   }
 
-}
 
 
+  togleSort(header){
+    if(this.assd == false){
+      this.sortRows(header)
+      this.assd = true;
+    }else {
+      this.unSortRows(header);
+      this.assd = false;
+    }
+  }
 
-var assd = false;
+  sortRows(header){
+    let i = 0;
+    this.content.sort((a, b) => {
+      if(a.obj[header] > b.obj[header]) return 1;
+      else if(a.obj[header] < b.obj[header]) return -1;
+      else return 0;
+    });
+    this.showRows();
+  }
 
-function togleSort(table, header){
-  if(assd == false){
-    sortRows(table, header)
-    assd = true;
-  }else {
-    unSortRows(table, header);
-    assd = false;
+  unSortRows(header){
+    let i = 0;
+    this.content.sort((a, b) => {
+      if(a.obj[header] < b.obj[header]) return 1;
+      else if(a.obj[header] > b.obj[header]) return -1;
+      else return 0;
+    });
+    this.showRows();
   }
 }
 
-function sortRows(table, header){
-  let i = 0;
-  let newContent = table.content.sort((a, b) => {
-    if(a.obj[header] > b.obj[header]) return 1;
-    else if(a.obj[header] < b.obj[header]) return -1;
-    else return 0;
-  });
-  table.setContent(newContent);
-  table.addRows();
-}
 
-function unSortRows(table, header){
-  let i = 0;
-  let newContent = table.content.sort((a, b) => {
-    if(a.obj[header] < b.obj[header]) return 1;
-    else if(a.obj[header] > b.obj[header]) return -1;
-    else return 0;
-  });
-  table.setContent(newContent);
-  table.addRows();
-}
+
+
 
 //read data starts
-  fetch("https://my-json-server.typicode.com/suraj-pawar-33/tableJson/db")
+  fetch("https://my-json-server.typicode.com/suraj-pawar-33/newtable/db")
   .then(response => response.text())
   .then(readThis);
   function readThis(text) {

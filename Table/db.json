@@ -7,43 +7,47 @@
       "movieRating": 8,
       "moreDetails": [
         {
-          "name": "Harrison Ford",
-          "movie": "Star Wars",
-          "character": "Han Solo",
-          "movieRating": 8,
+          "Director": "Aanand L Rai",
+          "movie": "Zero",
+          "character": "Bauua Singh",
+          "actor": "Shahrukh Khan",
+          "movieRating": 6.7,
           "moreDetails": {
-            "genre": "animation",
-            "language": "English"
+            "genre": "Love Story",
+            "language": "Hindi"
           }
         },
         {
-          "name": "Carrie Fisher",
-          "movie": "Star Wars",
-          "character": "Princess Leia",
-          "movieRating": 8,
+          "Director": "Rajkumar Hirani",
+          "movie": "Sanju",
+          "character": "Sanjay Dutt Sanju",
+          "actor":"Ranbir Kapoor",
+          "movieRating": 7.2,
           "moreDetails": {
-            "genre": "Horror",
-            "language": "English"
+            "genre": "Boigraphy",
+            "language": "Hindi"
           }
         },
         {
-          "name": "Al Pacino",
-          "movie": "The Godfather",
-          "character": "Michael Corleone",
-          "movieRating": "9",
+          "Director": "Meghna Gulzar",
+          "movie": "Razi",
+          "character": "Sehmat Khan",
+          "actor": "Alia Bhatt",
+          "movieRating": 6.9,
           "moreDetails": {
             "genre": "Action",
-            "language": "English"
+            "language": "Hindi"
           }
         },
         {
-          "name": "Robert De Niro",
-          "movie": "Goodfellas",
-          "character": "Jimmy Conway",
-          "movieRating": 7.8,
+          "Director": "Anurag Kashyap",
+          "movie": "Masan",
+          "character": "Pul",
+          "actor": "Vicky Kaushal",
+          "movieRating": 9.9,
           "moreDetails": {
-            "genre": "Comedy",
-            "language": "English"
+            "genre": "Love",
+            "language": "Hindi"
           }
         }
       ]
@@ -55,43 +59,91 @@
       "movieRating": 8,
       "moreDetails": [
         {
-          "name": "Harrison Ford",
-          "movie": "Star Wars",
-          "character": "Han Solo",
-          "movieRating": 8,
+          "Director": "Anurag Kashyap",
+          "movie": "Gangs of vasepur",
+          "character": "Fasal",
+          "Actor":"Navasuddin",
+          "movieRating": 8.3,
           "moreDetails": {
-            "genre": "animation",
+            "genre": "documentry",
+            "language": "Hindi"
+          }
+        },
+        {
+          "Director": "Christopher Nolan",
+          "movie": "Interstellar",
+          "character": "Astronaut",
+          "Actor": "Matthew McConaughey",
+          "movieRating": 8.3,
+          "moreDetails": {
+            "genre": "Space",
             "language": "English"
           }
         },
         {
-          "name": "Carrie Fisher",
-          "movie": "Star Wars",
-          "character": "Princess Leia",
-          "movieRating": 8,
+          "Director": "Sanjay Leela Bhansali",
+          "movie": "Padmaavat",
+          "character": "Padmaavati",
+          "Actor":"Deepika Padukone",
+          "movieRating": 9.2,
           "moreDetails": {
-            "genre": "Horror",
-            "language": "English"
+            "genre": "History",
+            "language": "Hindi"
           }
         },
         {
-          "name": "Al Pacino",
-          "movie": "The Godfather",
-          "character": "Michael Corleone",
-          "movieRating": "9",
-          "moreDetails": {
-            "genre": "Action",
-            "language": "English"
-          }
-        },
-        {
-          "name": "Robert De Niro",
-          "movie": "Goodfellas",
-          "character": "Jimmy Conway",
+          "Director": "Sriram Raghavan",
+          "movie": "Andhadhun",
+          "character": "Blind - Akash",
+          "Actor":"Ayushmann Khurrana",
           "movieRating": 7.8,
           "moreDetails": {
-            "genre": "Comedy",
-            "language": "English"
+            "genre": "Crime",
+            "language": "Hindi"
+          }
+        },
+        {
+          "Director": "Onkar Dahiwal",
+          "movie": "Ganitach Ganit ani Maz Ganit",
+          "character": "Ganya",
+          "Actor": "Nitya",
+          "movieRating": 10,
+          "moreDetails": {
+            "genre": "School",
+            "language": "Spanish"
+          }
+        },
+        {
+          "Director": "Sharat Katariya",
+          "movie": "Sui Dhaga",
+          "character": "Mauji Sharma",
+          "Actor": "Varun Dhawan",
+          "movieRating": 8.3,
+          "moreDetails": {
+            "genre": "Story",
+            "language": "Hindi"
+          }
+        },
+        {
+          "Director": "S Shankar",
+          "movie": "Padmaavat",
+          "character": "Vaseegaran",
+          "Actor": "Rajinikanth",
+          "movieRating": 9.2,
+          "moreDetails": {
+            "genre": "Technology",
+            "language": "Hindi"
+          }
+        },
+        {
+          "Director": "Sriram Raghavan",
+          "movie": "Andhadhun",
+          "character": "Blind Akash",
+          "Actor": "Ayushmann Khurrana",
+          "movieRating": 7.8,
+          "moreDetails": {
+            "genre": "Crime",
+            "language": "Hindi"
           }
         }
       ]
@@ -100,97 +152,145 @@
       "name": "Al Pacino",
       "movie": "The Godfather",
       "character": "Michael Corleone",
-      "movieRating": "9",
+      "movieRating": 9,
       "moreDetails": [
         {
-          "name": "Harrison Ford",
-          "movie": "Star Wars",
-          "character": "Han Solo",
-          "movieRating": 8,
+          "name": "Anurag Kashyap",
+          "movie": "Gangs of vasepur",
+          "character": "Fasal",
+          "Actor": "Navasuddin",
+          "movieRating": 8.3,
           "moreDetails": {
-            "genre": "animation",
+            "genre": "documentry",
+            "language": "Hindi"
+          }
+        },
+        {
+          "name": "Christopher Nolan",
+          "movie": "Interstellar",
+          "character": "Astronaut",
+          "Actor":"Matthew McConaughey",
+          "movieRating": 8.3,
+          "moreDetails": {
+            "genre": "Space",
             "language": "English"
           }
         },
         {
-          "name": "Carrie Fisher",
-          "movie": "Star Wars",
-          "character": "Princess Leia",
-          "movieRating": 8,
+          "name": "Sanjay Leela Bhansali",
+          "movie": "Padmaavat",
+          "character": "Padmaavati",
+          "Actor":"Deepika Padukone",
+          "movieRating": 9.2,
           "moreDetails": {
-            "genre": "Horror",
-            "language": "English"
+            "genre": "History",
+            "language": "Hindi"
           }
         },
         {
-          "name": "Al Pacino",
-          "movie": "The Godfather",
-          "character": "Michael Corleone",
-          "movieRating": "9",
-          "moreDetails": {
-            "genre": "Action",
-            "language": "English"
-          }
-        },
-        {
-          "name": "Robert De Niro",
-          "movie": "Goodfellas",
-          "character": "Jimmy Conway",
+          "name": "Sriram Raghavan",
+          "movie": "Andhadhun",
+          "character": "Blind Akash",
+          "Actor": "Ayushmann Khurrana",
           "movieRating": 7.8,
           "moreDetails": {
-            "genre": "Comedy",
-            "language": "English"
+            "genre": "Crime",
+            "language": "Hindi"
+          }
+        },
+        {
+          "name": "Onkar Dahivar",
+          "movie": "Ganitach Ganit",
+          "character": "Ganya",
+          "Actor":"Nitya",
+          "movieRating": 10,
+          "moreDetails": {
+            "genre": "School",
+            "language": "Spanish"
+          }
+        },
+        {
+          "name": "Sharat Katariya",
+          "movie": "Sui Dhaga",
+          "character": "Mauji Sharma",
+          "Actor":"Varun Dhawan",
+          "movieRating": 8.3,
+          "moreDetails": {
+            "genre": "Story",
+            "language": "Hindi"
+          }
+        },
+        {
+          "name": "S Shankar",
+          "movie": "Padmaavat",
+          "character": "Vaseegaran",
+          "Actor": "Rajinikanth",
+          "movieRating": 9.2,
+          "moreDetails": {
+            "genre": "Technology",
+            "language": "Hindi"
+          }
+        },
+        {
+          "name": "Sriram Raghavan",
+          "movie": "Andhadhun",
+          "character": "Blind Akash",
+          "Actor": "Ayushmann Khurrana",
+          "movieRating": 7.8,
+          "moreDetails": {
+            "genre": "Crime",
+            "language": "Hindi"
           }
         }
       ]
     },
     {
-      "name": "Robert De Niro",
-      "movie": "Goodfellas",
-      "character": "Jimmy Conway",
-      "movieRating": 7.8,
+      "name": "Onkar Dahivar",
+      "movie": "Ganitach Ganit ani Maz Ganit",
+      "character": "Ganya",
+      "movieRating": 10,
       "moreDetails": [
-        {
-          "name": "Harrison Ford",
-          "movie": "Star Wars",
-          "character": "Han Solo",
-          "movieRating": 8,
-          "moreDetails": {
-            "genre": "animation",
-            "language": "English"
+          {
+            "name": "Harrison Ford",
+            "movie": "Star Wars",
+            "character": "Han Solo",
+            "movieRating": 8,
+            "moreDetails": {
+              "genre": "animation",
+              "language": "English"
+            }
+          },
+          {
+            "name": "Carrie Fisher",
+            "movie": "Star Wars",
+            "character": "Princess Leia",
+            "movieRating": 8,
+            "moreDetails": {
+              "genre": "Horror",
+              "language": "English"
+            }
+          },
+          {
+            "name": "Al Pacino",
+            "movie": "The Godfather",
+            "character": "Michael Corleone",
+            "movieRating": 9,
+            "moreDetails": {
+              "genre": "Action",
+              "language": "English"
+            }
+          },
+          {
+            "name": "Robert De Niro",
+            "movie": "Goodfellas",
+            "character": "Jimmy Conway",
+            "movieRating": 7.8,
+            "moreDetails": {
+              "genre": "Comedy",
+              "language": "English"
+            }
           }
-        },
-        {
-          "name": "Carrie Fisher",
-          "movie": "Star Wars",
-          "character": "Princess Leia",
-          "movieRating": 8,
-          "moreDetails": {
-            "genre": "Horror",
-            "language": "English"
-          }
-        },
-        {
-          "name": "Al Pacino",
-          "movie": "The Godfather",
-          "character": "Michael Corleone",
-          "movieRating": "9",
-          "moreDetails": {
-            "genre": "Action",
-            "language": "English"
-          }
-        },
-        {
-          "name": "Robert De Niro",
-          "movie": "Goodfellas",
-          "character": "Jimmy Conway",
-          "movieRating": 7.8,
-          "moreDetails": {
-            "genre": "Comedy",
-            "language": "English"
-          }
-        }
-      ]
+        ]
     }
   ]
 }
