@@ -12,19 +12,27 @@ function init(){
 var wrapper = document.getElementById('main');
 var counter = 1;
 
+/**
+creates row
+**/
 class Row {
   constructor(obj) {
     this.obj = obj;
     this.row = 0;
   }
-  tHead(n){
+  /**
+  creates row head.
+  sorter variable is for validating
+  click on the head for sorting.
+  **/
+  tHead(sorter){
     let tr = document.createElement('tr');
     for (var item in this.obj) {
       let th = document.createElement('th');
       let p = document.createElement('p');
 
       p.innerHTML = item;
-      p.myVar = n;
+      p.myVar = sorter;
       p.addEventListener("click", () => {});
       th.appendChild(p);
       tr.appendChild(th);
@@ -52,7 +60,9 @@ class Row {
   }
 }
 
-
+/**
+creates table
+**/
 class Table {
   constructor(tArr) {
     this.tArr = tArr;
@@ -68,7 +78,9 @@ class Table {
     });
     return this.table;
   }
-
+  /**
+  adds multiple Row objects to the Array content[]
+  **/
   setRows(){
     let i = 0;
     this.tArr.forEach((item) => {
@@ -76,17 +88,24 @@ class Table {
       i++;
     });
   }
+  /**
+  changes content[] array
+  **/
   setContent(content){
     this.content = content;
   }
-
+  /**
+  adds multiple rows to the Array content[]
+  **/
   addRows(){
     this.setHeader();
     this.content.forEach((item) => {
       this.table.appendChild(item.tBody());
     });
   }
-
+  /**
+  adds multiple rows to the DOM
+  **/
   showRows(){
     this.table.innerHTML = "";
     this.setHeader();
@@ -95,31 +114,43 @@ class Table {
     });
   }
 
-
+  /**
+  adds header to the table
+  **/
   setHeader(){
     let header = new Row(this.tArr[0]);
     this.table.appendChild(header.tHead(29));
   }
-
+  /**
+  adds single row to the table
+  **/
   addRow(){
     let header = new Row(this.tArr);
     this.table.appendChild(header.tHead(30));
     this.content[0] = new Row(this.tArr);
     this.table.appendChild(this.content[0].tBody());
   }
-
+  /**
+  sets table in the div which needs input field
+  **/
   setDiv(){
     let div = this.getDiv(true);
     div.appendChild(this.getTable());
     wrapper.appendChild(div);
   }
-
+  /**
+  sets single row table in the div
+  **/
   setDivSmall(){
     let div = this.getDiv(false);
     div.appendChild(this.getTable());
     wrapper.appendChild(div);
   }
 
+  /**
+  Creates div for the table
+  "needs" is for setting input field
+  **/
   getDiv(needs){
     let div = document.createElement("div");
     div.classList.add('table_box');
@@ -133,12 +164,12 @@ class Table {
     inp.classList.add("tSearch");
     inp.addEventListener("keyup", (ev) => {
 
-      let searchKey = ev.target.value.toString().toLowerCase();
+      let searchKey = ev.target.value.toString();
 
       for (let item of this.content) {
         let notPresent = true;
           for (var value in item.obj) {
-            let key = item.obj[value].toString().toLowerCase();
+            let key = item.obj[value].toString();
               if(key.includes(searchKey)){
                 notPresent = false;
               }
@@ -147,6 +178,7 @@ class Table {
             item.row.classList.add("display_none");
           }else {
             item.row.classList.remove("display_none");
+            item.row = highLight(searchKey, item.row);
           }
         }
     });
@@ -208,6 +240,9 @@ function readThis(text) {
   }
 
 }
+/**
+to select function according to the type
+**/
 
 function readData(item) {
   if(checkTypeOf(item) == "obj"){
@@ -222,15 +257,32 @@ function readData(item) {
 
   }
 }
+
+/**
+to check the type of data (object / Array of object)
+**/
 function checkTypeOf(value) {
   if (value.length != undefined && typeof value != "string") {
     return "arr";
   }else if(value.length == undefined && typeof value != "number"){
     return "obj";
-  }else if (typeof value == "string") {
-    return "str";
-  }else {
-    return "num";
   }
+}
+/**
+to highLight the search keyword
+**/
+function highLight(searchKey, row){
+  let tdList = row.getElementsByTagName("td");
+  for (let td of tdList) {
+    if (td.innerHTML.includes("<span>")) {
+      td.innerHTML = td.innerHTML.replace("<span>", "");
+      td.innerHTML = td.innerHTML.replace("</span>", "");
+    }
+
+    if (td.innerHTML.includes(searchKey)) {
+      td.innerHTML = td.innerHTML.replace(searchKey, "<span>"+searchKey+"</span>");
+    }
+  }
+  return row;
 }
 //end

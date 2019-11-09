@@ -6,22 +6,26 @@
 
 .wrapper{
 }
-table{
+.table_box table{
   padding: 10px;
   width: 100%;
   font-family: sans-serif;
   background-color: #eee;
   border-collapse: collapse;
 }
-th, td{
+.table_box th, td{
   border-bottom: 1px solid black;
+}
+.table_box td span{
+  background-color: black;
+  color: white;
 }
 
 .display_none{
   display: none;
 }
 
-th{
+.table_box th{
   font-weight: bold;
   padding: 12px 10px;
   cursor: pointer;
@@ -29,12 +33,12 @@ th{
   background-color: black;
   color: white;
 }
-th p{
+.table_box th p{
   text-transform: uppercase;
   text-align: left;
 }
 
-td{
+.table_box td{
   padding: 10px;
   overflow: auto;
   background-color: #fff;
